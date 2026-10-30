@@ -2,25 +2,24 @@ let platosGuardados = [];
 let ultimoPlatoIndex = -1;
 
 // Referencias a elementos del DOM
-const platoResultadoEl = document.getElementById('plato-resultado');
-const etiquetasResultadoEl = document.getElementById('etiquetas-resultado');
-const filtroCategoriaEl = document.getElementById('filtro-categoria');
-const filtroPequeEl = document.getElementById('filtro-peque');
-const btnGenerarEl = document.getElementById('btn-generar');
-const adminPanelEl = document.getElementById('admin-panel');
-const formRecetaEl = document.getElementById('form-receta');
+const platoResultadoEl = document.getElementById("plato-resultado");
+const etiquetasResultadoEl = document.getElementById("etiquetas-resultado");
+const filtroCategoriaEl = document.getElementById("filtro-categoria");
+const btnGenerarEl = document.getElementById("btn-generar");
+const adminPanelEl = document.getElementById("admin-panel");
+const formRecetaEl = document.getElementById("form-receta");
 
 // Inicializar la aplicación
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Mostrar módulo de administración si la URL contiene ?admin=true
-  if (window.location.search.includes('admin=true')) {
-    adminPanelEl.style.display = 'block';
+  if (window.location.search.includes("admin=true")) {
+    adminPanelEl.style.display = "block";
   }
 
   // Cargar datos y asignar eventos
   inicializarDatos();
-  btnGenerarEl.addEventListener('click', generarComida);
-  formRecetaEl.addEventListener('submit', manejarEnvioReceta);
+  btnGenerarEl.addEventListener("click", generarComida);
+  formRecetaEl.addEventListener("submit", manejarEnvioReceta);
 });
 
 async function inicializarDatos() {
@@ -40,13 +39,12 @@ function generarComida() {
   if (platosGuardados.length === 0) return;
 
   const categoria = filtroCategoriaEl.value;
-  const soloPeque = filtroPequeEl.checked;
 
   // Filtrado de recetas
-  const opciones = platosGuardados.filter(plato => {
-    const cumpleCategoria = (categoria === 'todas' || plato.categoria === categoria);
-    const cumplePeque = soloPeque ? plato.apto_peque === true : true;
-    return cumpleCategoria && cumplePeque;
+  const opciones = platosGuardados.filter((plato) => {
+    const cumpleCategoria =
+      categoria === "todas" || plato.categoria === categoria;
+    return cumpleCategoria;
   });
 
   if (opciones.length === 0) {
@@ -59,28 +57,24 @@ function generarComida() {
   let indiceRandom;
   do {
     indiceRandom = Math.floor(Math.random() * opciones.length);
-  } while (opciones.length > 1 && opciones[indiceRandom].id === ultimoPlatoIndex);
+  } while (
+    opciones.length > 1 &&
+    opciones[indiceRandom].id === ultimoPlatoIndex
+  );
 
   const seleccion = opciones[indiceRandom];
   ultimoPlatoIndex = seleccion.id;
 
   // Renderizado en pantalla
   platoResultadoEl.innerText = seleccion.nombre;
-  
-  let htmlEtiquetas = `<span class="etiqueta">${seleccion.categoria}</span>`;
-  if (seleccion.apto_peque) {
-    htmlEtiquetas += ` <span class="etiqueta etiqueta-peque">Apto Peque</span>`;
-  }
-  etiquetasResultadoEl.innerHTML = htmlEtiquetas;
 }
 
 async function manejarEnvioReceta(e) {
   e.preventDefault();
 
   const nuevaReceta = {
-    nombre: document.getElementById('nuevo-nombre').value.trim(),
-    categoria: document.getElementById('nueva-categoria').value,
-    apto_peque: document.getElementById('nuevo-peque').checked
+    nombre: document.getElementById("nuevo-nombre").value.trim(),
+    categoria: document.getElementById("nueva-categoria").value,
   };
 
   const exito = await insertarRecetaDB(nuevaReceta);
