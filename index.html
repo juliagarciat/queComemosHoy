@@ -33,21 +33,29 @@
 
   <!-- Vista de Administración (Oculta por defecto) -->
   <div class="container" id="admin-panel">
-  <h2>🔒 Añadir Nueva Receta</h2>
-  <form id="form-receta">
-    <input type="text" id="nuevo-nombre" placeholder="Nombre del plato" required>
-    
-    <select id="nueva-categoria">
-      <option value="Legumbres">Legumbres y Cuchara</option>
-      <option value="Carne">Carnes</option>
-      <option value="Pescado">Pescados</option>
-      <option value="Pasta">Pasta y Arroz</option>
-      <option value="Cena">Cenas Ligeras</option>
-    </select>
+    <h2>🔒 Gestión de Recetas</h2>
+    <form id="form-receta">
+      <input type="hidden" id="id-receta" value="">
 
-    <button type="submit" class="btn-guardar">Guardar en la nube</button>
-  </form>
-</div>
+      <input type="text" id="nuevo-nombre" placeholder="Nombre del plato" required>
+
+      <select id="nueva-categoria">
+        <option value="Legumbres">Legumbres y Cuchara</option>
+        <option value="Carne">Carnes</option>
+        <option value="Pescado">Pescados</option>
+        <option value="Pasta">Pasta y Arroz</option>
+        <option value="Cena">Cenas Ligeras</option>
+      </select>
+
+      <button type="submit" class="btn-guardar" id="btn-guardar">Guardar en la nube</button>
+      <button type="button" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
+    </form>
+
+    <div id="lista-recetas">
+      <h3>📋 Recetas Guardadas</h3>
+      <div id="items-recetas"></div>
+    </div>
+  </div>
       
 
   <!-- Scripts JavaScript ordenados -->

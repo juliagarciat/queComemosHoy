@@ -23,3 +23,31 @@ async function insertarRecetaDB(nuevaReceta) {
   }
   return true;
 }
+
+// Actualiza un registro existente en la nube (edición de recetas)
+async function actualizarRecetaDB(id, cambios) {
+  const { error } = await dbClient
+    .from('recetas')
+    .update(cambios)
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error al actualizar la receta:', error);
+    return false;
+  }
+  return true;
+}
+
+// Elimina un registro de la nube (borrado de recetas)
+async function eliminarRecetaDB(id) {
+  const { error } = await dbClient
+    .from('recetas')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error al eliminar la receta:', error);
+    return false;
+  }
+  return true;
+}

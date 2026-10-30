@@ -107,3 +107,45 @@ button:hover {
   margin-top: 20px;
   padding-top: 20px;
 }
+
+#lista-recetas {
+  margin-top: 25px;
+  border-top: 2px dashed var(--border);
+  padding-top: 15px;
+}
+
+#items-recetas {
+  text-align: left;
+}
+
+.item-receta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 8px 0;
+}
+
+.info-receta {
+  flex: 1;
+  font-weight: 600;
+}
+
+.btn-editar, .btn-eliminar {
+  width: auto;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.btn-cancelar {
+  background: #95a5a6;
+}
+
+.btn-cancelar:hover {
+  background: #7f8c8d;
+}
