@@ -15,10 +15,17 @@ const listaRecetasEl = document.getElementById("items-recetas");
 let recetaEnEdicionId = null;
 
 // Inicializar la aplicación
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // Mostrar módulo de administración si la URL contiene ?admin=true
   if (window.location.search.includes("admin=true")) {
     adminPanelEl.style.display = "block";
+  }
+
+  // Si la URL trae ?editar=<id>, preparar el formulario para editar la receta
+  const params = new URLSearchParams(window.location.search);
+  const editarId = params.get("editar");
+  if (editarId) {
+    await editarReceta(Number(editarId));
   }
 
   // Cargar datos y asignar eventos
@@ -78,6 +85,8 @@ function generarComida() {
 
 // Refresca la lista de recetas guardadas en la nube (panel de administración)
 async function cargarListaRecetas() {
+  if (!listaRecetasEl) return;
+
   const datos = await obtenerRecetasDB();
   if (datos === null) return;
 
@@ -116,18 +125,20 @@ async function cargarListaRecetas() {
 }
 
 // Delegación de eventos para las acciones de la lista de recetas
-listaRecetasEl.addEventListener("click", async (e) => {
-  const btn = e.target.closest("button");
-  if (!btn) return;
+if (listaRecetasEl) {
+  listaRecetasEl.addEventListener("click", async (e) => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
 
-  const id = Number(btn.dataset.id);
+    const id = Number(btn.dataset.id);
 
-  if (btn.classList.contains("btn-editar")) {
-    await editarReceta(id);
-  } else if (btn.classList.contains("btn-eliminar")) {
-    await eliminarReceta(id);
-  }
-});
+    if (btn.classList.contains("btn-editar")) {
+      await editarReceta(id);
+    } else if (btn.classList.contains("btn-eliminar")) {
+      await eliminarReceta(id);
+    }
+  });
+}
 
 // Rellena el formulario con los datos de una receta para editarla
 async function editarReceta(id) {
