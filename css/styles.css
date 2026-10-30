@@ -149,3 +149,22 @@ button:hover {
 .btn-cancelar:hover {
   background: #7f8c8d;
 }
+
+.btn-ver-recetas, .btn-volver {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: var(--primary);
+  color: white;
+  padding: 14px 20px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  width: 100%;
+  margin: 10px 0;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.btn-ver-recetas:hover, .btn-volver:hover {
+  background: var(--primary-hover);
+}
