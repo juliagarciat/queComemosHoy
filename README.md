@@ -10,7 +10,6 @@ Aplicación web para gestionar y sugerir recetas familiares diarias de forma ale
 * **Filtros por Categoría:** Filtra platos según su tipo (Legumbres, Carnes, Pescados, Pastas, Cenas ligeras).
 * **Filtro "Apto Peque":** Opción para mostrar solo las comidas indicadas para los más pequeños de la casa.
 * **Persistencia en la Nube:** Integración con **Supabase** para sincronizar recetas al instante entre dispositivos.
-* **Panel de Administración Oculto:** Permite añadir nuevas recetas a la base de datos accediendo a la web con la ruta `?admin=true`.
 
 ---
 
