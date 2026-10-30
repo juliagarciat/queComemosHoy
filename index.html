@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Qué comemos hoy?</title>
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- SDK de Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- Vista Principal (Padre) -->
+  <div class="container" id="vista-padre">
+    <h1>🍽️ ¿Qué comemos hoy?</h1>
+    
+    <select id="filtro-categoria">
+      <option value="todas">Todas las categorías</option>
+      <option value="Legumbres">Legumbres y Cuchara</option>
+      <option value="Carne">Carnes</option>
+      <option value="Pescado">Pescados</option>
+      <option value="Pasta">Pasta y Arroz</option>
+      <option value="Cena">Cenas Ligeras</option>
+    </select>
+
+    <label class="checkbox-label">
+      <input type="checkbox" id="filtro-peque"> Solo opciones que le gustan al peque
+    </label>
+
+    <button id="btn-generar">Generar Plato Aleatorio</button>
+    
+    <div class="resultado" id="plato-resultado">Cargando recetas...</div>
+    <div id="etiquetas-resultado"></div>
+  </div>
+
+  <!-- Vista de Administración (Oculta por defecto) -->
+  <div class="container" id="admin-panel">
+    <h2>🔒 Añadir Nueva Receta</h2>
+    <form id="form-receta">
+      <input type="text" id="nuevo-nombre" placeholder="Nombre del plato" required>
+      
+      <select id="nueva-categoria">
+        <option value="Legumbres">Legumbres y Cuchara</option>
+        <option value="Carne">Carnes</option>
+        <option value="Pescado">Pescados</option>
+        <option value="Pasta">Pasta y Arroz</option>
+        <option value="Cena">Cenas Ligeras</option>
+      </select>
+      
+      <label class="checkbox-label" style="text-align: left;">
+        <input type="checkbox" id="nuevo-peque"> Le suele gustar al peque
+      </label>
+      
+      <button type="submit" class="btn-guardar">Guardar en la nube</button>
+    </form>
+  </div>
+
+  <!-- Scripts JavaScript ordenados -->
+  <script src="js/config.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
