@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <!-- Vista Principal (Padre) -->
+  <!-- Vista Principal -->
   <div class="container" id="vista-padre">
     <h1>🍽️ ¿Qué comemos hoy?</h1>
     
@@ -33,22 +33,22 @@
 
   <!-- Vista de Administración (Oculta por defecto) -->
   <div class="container" id="admin-panel">
-    <h2>🔒 Añadir Nueva Receta</h2>
-    <form id="form-receta">
-      <input type="text" id="nuevo-nombre" placeholder="Nombre del plato" required>
+  <h2>🔒 Añadir Nueva Receta</h2>
+  <form id="form-receta">
+    <input type="text" id="nuevo-nombre" placeholder="Nombre del plato" required>
+    
+    <select id="nueva-categoria">
+      <option value="Legumbres">Legumbres y Cuchara</option>
+      <option value="Carne">Carnes</option>
+      <option value="Pescado">Pescados</option>
+      <option value="Pasta">Pasta y Arroz</option>
+      <option value="Cena">Cenas Ligeras</option>
+    </select>
+
+    <button type="submit" class="btn-guardar">Guardar en la nube</button>
+  </form>
+</div>
       
-      <select id="nueva-categoria">
-        <option value="Legumbres">Legumbres y Cuchara</option>
-        <option value="Carne">Carnes</option>
-        <option value="Pescado">Pescados</option>
-        <option value="Pasta">Pasta y Arroz</option>
-        <option value="Cena">Cenas Ligeras</option>
-      </select>
-      
-      
-      <button type="submit" class="btn-guardar">Guardar en la nube</button>
-    </form>
-  </div>
 
   <!-- Scripts JavaScript ordenados -->
   <script src="js/config.js"></script>
